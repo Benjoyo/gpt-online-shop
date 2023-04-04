@@ -1,0 +1,1 @@
+rootProject.name = "ktor-gpt4-online-shop"

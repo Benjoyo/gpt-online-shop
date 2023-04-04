@@ -1,0 +1,69 @@
+### Register a new user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "testpassword"
+}
+
+###
+
+### Login with the registered user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+###
+
+### Login with the default admin user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+###
+
+### Replace <ACCESS_TOKEN> with the token received from a successful login request
+### Get the personal information of the logged-in user
+GET http://localhost:8080/api/users/me
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk3OTA1MzgsImlhdCI6MTY3OTc1NDUzOCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.4Gv-rFmBCiN-krequC2kRWIwNhzbuva0OAZvoSN94WE
+###
+
+### Add a credit card for the logged-in user
+POST http://localhost:8080/api/users/me/cards
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk3OTA1MzgsImlhdCI6MTY3OTc1NDUzOCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.4Gv-rFmBCiN-krequC2kRWIwNhzbuva0OAZvoSN94WE
+
+{
+  "cardNumber": "11111111111",
+  "expiryMonth": 12,
+  "expiryYear": 2025,
+  "cvv": 123
+}
+
+
+###
+
+### Add a shipping address for the logged-in user
+POST http://localhost:8080/api/users/me/addresses
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk3OTA1MzgsImlhdCI6MTY3OTc1NDUzOCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.4Gv-rFmBCiN-krequC2kRWIwNhzbuva0OAZvoSN94WE
+
+{
+  "street": "123 Main St",
+  "city": "Anytown",
+  "state": "CA",
+  "country": "USA",
+  "postalCode": "12345"
+}
+
+###

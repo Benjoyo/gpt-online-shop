@@ -1,0 +1,41 @@
+### Users can put a product into the cart
+POST http://localhost:8080/api/cart/items
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk5NDQ3OTQsImlhdCI6MTY3OTkwODc5NCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.QOvmlPSN90JdRpgSpXDLNksiOdzLdmRA4evZE6oihew
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 8
+}
+
+### Users can view the cart
+GET http://localhost:8080/api/cart
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk5NDQ3OTQsImlhdCI6MTY3OTkwODc5NCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.QOvmlPSN90JdRpgSpXDLNksiOdzLdmRA4evZE6oihew
+
+### Users can increase or decrease a cart item's quantity
+POST http://localhost:8080/api/cart/items
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk5NDQ3OTQsImlhdCI6MTY3OTkwODc5NCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.QOvmlPSN90JdRpgSpXDLNksiOdzLdmRA4evZE6oihew
+Content-Type: application/json
+
+{
+"productId": 1,
+"quantity": 2
+}
+
+### Logged-in users can checkout the cart
+POST http://localhost:8080/api/cart/checkout
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk5NDQ3OTQsImlhdCI6MTY3OTkwODc5NCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.QOvmlPSN90JdRpgSpXDLNksiOdzLdmRA4evZE6oihew
+
+### Logged-in users can complete the purchase after checkout, using a specific payment method and shipping address
+POST http://localhost:8080/api/orders
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk5NDQ3OTQsImlhdCI6MTY3OTkwODc5NCwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.QOvmlPSN90JdRpgSpXDLNksiOdzLdmRA4evZE6oihew
+Content-Type: application/json
+
+{
+"paymentMethodId": 1,
+"shippingAddressId": 1
+}
+
+### Logged-in users can retrieve their order history
+GET http://localhost:8080/api/orders
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjYiLCJleHAiOjE2Nzk5ODc1OTYsImlhdCI6MTY3OTk1MTU5NiwidXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.91iSjq0XPsXbWjY4D3XlljQ_AiXM-LjjW4x0TdcX6Hg

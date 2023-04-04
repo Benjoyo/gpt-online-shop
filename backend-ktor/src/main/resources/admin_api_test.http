@@ -1,0 +1,17 @@
+### Login with the default admin user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+### Fetch All Orders (Admin)
+GET http://localhost:8080/api/admin/orders
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjEiLCJleHAiOjE2Nzk5ODczODIsImlhdCI6MTY3OTk1MTM4MiwidXNlcm5hbWUiOiJhZG1pbiJ9.o-S-SdHP2c5FNJxCvFPvtFrqOAcSAZzmiZ-flOyxxu0
+
+### Mark an order as shipped (Admin)
+PATCH http://localhost:8080/api/admin/orders/1/mark-shipped
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoieW91cnNob3AiLCJpZCI6IjEiLCJleHAiOjE2Nzk5ODczODIsImlhdCI6MTY3OTk1MTM4MiwidXNlcm5hbWUiOiJhZG1pbiJ9.o-S-SdHP2c5FNJxCvFPvtFrqOAcSAZzmiZ-flOyxxu0
+Content-Type: application/json
