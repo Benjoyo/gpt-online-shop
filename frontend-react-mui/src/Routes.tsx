@@ -7,6 +7,7 @@ import CreditCard from "./components/Checkout/CreditCard";
 import ShippingAddress from "./components/Checkout/ShippingAddress";
 import Login from "./components/Header/Login";
 import Register from "./components/Header/Register";
+import OrderAdmin from "./components/Order/OrderAdmin";
 import OrderHistory from "./components/Order/OrderHistory";
 import { Product } from "./components/Product/Product";
 import ProductList from "./components/Product/ProductList";
@@ -26,6 +27,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/payment" element={<CreditCard />} />
       <Route path="/summary" element={<CompletePurchase />} />
       <Route path="/orders" element={<OrderHistory />} />
+      <Route path="/admin" element={<OrderAdmin />} />
       {/* Add more routes here as needed */}
     </Routes>
   );

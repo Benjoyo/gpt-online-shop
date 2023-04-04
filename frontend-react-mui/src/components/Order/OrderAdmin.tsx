@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// OrderAdmin.tsx
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -8,46 +9,33 @@ import {
   List,
   ListItem,
   ListItemText,
+  Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { getOrderHistory } from "../../services/orderService";
-import { CheckoutItem } from "../Checkout/Checkout";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import { Order } from "./OrderHistory";
+import { getAllOrders, markOrderAsShipped } from "../../services/adminService";
 
-export interface Order {
-  id: number;
-  userId: number;
-  items: CheckoutItem[];
-  total: number;
-  paymentMethod: {
-    id: number;
-    cardNumber: string;
-    expiryMonth: number;
-    expiryYear: number;
-  };
-  shippingAddress: {
-    id: number;
-    street: string;
-    city: string;
-    state: string;
-    country: string;
-    postalCode: string;
-  };
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-const OrderHistory: React.FC = () => {
+const OrderAdmin: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
-    const fetchOrderHistory = async () => {
-      const orderHistory = await getOrderHistory();
-      setOrders(orderHistory);
+    const fetchAllOrders = async () => {
+      const allOrders = await getAllOrders();
+      setOrders(allOrders);
     };
 
-    fetchOrderHistory();
+    fetchAllOrders();
   }, []);
+
+  const handleMarkAsShipped = async (orderId: number) => {
+    await markOrderAsShipped(orderId);
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === orderId ? { ...order, status: "SHIPPED" } : order
+      )
+    );
+  };
 
   return (
     <Box
@@ -59,7 +47,7 @@ const OrderHistory: React.FC = () => {
       }}
     >
       <Typography variant="h4" component="div" marginBottom={2}>
-        Order History
+        All Orders
       </Typography>
       {orders.map((order) => (
         <Accordion key={order.id}>
@@ -79,6 +67,16 @@ const OrderHistory: React.FC = () => {
                 </ListItem>
               ))}
             </List>
+            {order.status === "PENDING" && (
+              <Button
+                startIcon={<LocalShippingIcon />}
+                color="primary"
+                variant="contained"
+                onClick={() => handleMarkAsShipped(order.id)}
+              >
+                Mark shipped
+              </Button>
+            )}
           </AccordionDetails>
         </Accordion>
       ))}
@@ -86,4 +84,4 @@ const OrderHistory: React.FC = () => {
   );
 };
 
-export default OrderHistory;
+export default OrderAdmin;
