@@ -1,4 +1,4 @@
-# gpt-online-shop
+# gpt-online-shop test
 
 Experimental project to evaluate the efficacy of using a LLM like GPT-4 to generate a complete, non-trivial software project consisting of a backend and frontend.
 
